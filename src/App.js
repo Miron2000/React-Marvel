@@ -1,26 +1,38 @@
 import React from 'react';
 import logo from './logo.svg';
-import './App.css';
+import { Switch, Route, Link } from 'react-router-dom';
+import Characters from "./containers/Characters";
+import Stories from "./containers/Stories";
+import Navigation from './components/Nav';
+import Main from "./containers/Main";
+import Footer from "./components/Footer";
 
-function App() {
+
+// 'http://gateway.marvel.com/v1/public/characters?ts=1&apikey=0fb1dc2e0eeeb965f0977333e073bd40&hash=60b1c058e51daa0303d90a24d75b0631'
+
+function App(props) {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <>
+      <Navigation>
+        <Link className='nav_text' to='/main'>Main</Link>
+        <Link className='nav_text' to='/characters'>Characters</Link>
+        <Link className='nav_text' to='/stories'>Stories</Link>
+      </Navigation>
+
+      <Switch>
+        <Route path='/characters'>
+          <Characters />
+        </Route>
+        <Route path='/stories'>
+          <Stories />
+        </Route>
+        <Route path='/main'>
+          <Main />
+        </Route>
+      </Switch>
+     <Footer/>
+    </>
+  )
 }
 
 export default App;

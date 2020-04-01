@@ -6,6 +6,8 @@ import Stories from "./containers/Stories";
 import Navigation from './components/Nav';
 import Main from "./containers/Main";
 import Footer from "./components/Footer";
+import CharacterInfo from "./containers/CharacterInfo";
+
 
 
 // 'http://gateway.marvel.com/v1/public/characters?ts=1&apikey=0fb1dc2e0eeeb965f0977333e073bd40&hash=60b1c058e51daa0303d90a24d75b0631'
@@ -20,15 +22,16 @@ function App(props) {
       </Navigation>
 
       <Switch>
-        <Route path='/characters'>
-          <Characters />
-        </Route>
-        <Route path='/stories'>
-          <Stories />
-        </Route>
-        <Route path='/main'>
-          <Main />
-        </Route>
+        {/* exact коректо працювала лінка і переходило по ссилці  */}
+        <Route path='/characters' exact component={Characters}/>
+       
+        <Route path='/characters/:id'  component={CharacterInfo}/>
+        
+
+        <Route path='/stories' component={Stories}/>
+         
+        <Route path='/main' component={Main}/>
+        
       </Switch>
      <Footer/>
     </>
